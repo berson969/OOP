@@ -1,9 +1,6 @@
 # ООП: наследование, инкапсуляция и полиморфизм
 
 
-from tabnanny import check
-
-
 def average(dict_grades):
     sm = 0
     ln = 0
