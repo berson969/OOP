@@ -60,8 +60,8 @@ class Student:
         return f'Name: {self.name} \nSurname: {self.surname}\nAvg grade of homeworks: {average(self.grades)}\nCourses in progress: {",".join(self.courses_in_progress)}\nFinished courses: {",".join(self.finished_courses)}\n\n'
  
     def __lt__(self, other):
-        if not isinstance(other, type(self)):
-            return "It's a wrong!"
+        if not isinstance(other, type(self)) or type(average(self.grades)) != float or type(average(other.grades)) != float:
+            return "It's wrong!"
         return average(self.grades) < average(other.grades)
 
 
@@ -82,8 +82,8 @@ class Lecturer(Mentor):
         return f'Name: {self.name} \nSurname: {self.surname}\nAvg grade of lectures: {average(self.grades)}\n\n'
 
     def __lt__(self, other):
-        if not isinstance(other, type(self)):
-            return "It's a wrong!"
+        if not isinstance(other, type(self)) or type(average(self.grades)) != float or type(average(other.grades)) != float:
+            return "It's wrong!"
         return average(self.grades) < average(other.grades)
 
    
@@ -101,7 +101,7 @@ class Reviewer(Mentor):
         return f'Name: {self.name} \nSurname: {self.surname}\n\n'
 
     def __lt__(self, other):
-        return "It's a wrong!"
+        return "It's wrong!"
 
 
 list_students = []
@@ -188,6 +188,10 @@ best_student.add_courses('Python')
 print(f"\n Average student's grade of Python: {average_in_course(list_students, 'Python')}\n")
 
 
-
-
-
+check_student = Student('Garry', 'Potter', 'male')
+check_student.courses_in_progress += ['Python']
+# cool_reviewer.rate_hw(check_student, 'Python', 0)
+# cool_reviewer.rate_hw(check_student, 'Python', 0)
+print (cool_reviewer < check_student)
+# print (check_student)
+print (best_student.rate_lc(good_lecturer, 'Python', 10))
